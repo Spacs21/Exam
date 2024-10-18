@@ -1,0 +1,122 @@
+.grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+  
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(4, auto); 
+    }
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, auto); 
+    }
+  }
+  
+  .card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 100%;
+  
+    a {
+      margin-top: 10px;
+    }
+  
+    &:hover {
+      transform: scale(1.03);
+    }
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.3s ease;
+    }
+  
+    .overlay {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: #fff;
+  
+      h2 {
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+  
+      .shop-now {
+        font-size: 14px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        display: inline-block;
+      }
+    }
+  }
+  
+  .large-card {
+    grid-column: span 2;
+    height: 400px;
+  
+    @media (max-width: 1024px) {
+      grid-column: span 2;
+      height: 300px; 
+    }
+  
+    @media (max-width: 768px) {
+      grid-column: span 1;
+      height: 300px; 
+    }
+  }
+  
+  .medium-card {
+    grid-column: span 1;
+    height: 250px;
+  
+    img {
+      object-fit: cover;
+    }
+  
+    @media (max-width: 768px) {
+      height: 220px; 
+    }
+  }
+  
+  .small-card {
+    grid-column: span 1;
+    height: 250px;
+  
+    @media (max-width: 768px) {
+      height: 220px; 
+    }
+  }
+  
+  .last-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  

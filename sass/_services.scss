@@ -1,0 +1,12 @@
+.services{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 100px 0;
+    &__item{
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        align-items: center;
+    }
+}
