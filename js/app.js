@@ -2,6 +2,9 @@ const BASE_URL = "https://fakestoreapi.com";
 const categoryItems = document.querySelectorAll(".category__item");
 const products = document.querySelector(".products");
 const btn = document.querySelector(".btn");
+const burger = document.querySelector(".header__burger")
+const menu = document.querySelector(".menu")
+const loader = document.querySelector(".lds-roller")
 let count = 8;
 let offset = 2
 
@@ -10,6 +13,9 @@ async function GetData(endpoint, count) {
     response
         .json()
         .then(res => createProduct(res))
+        .finally(()=>{
+            loader.style.display = "none";
+        })
         .catch(err => console.log(err));
 }
 
@@ -21,7 +27,7 @@ function createProduct(data) {
         card.className = "product__item";
         card.innerHTML = `
         <div class="products__item__image">
-            <img src="${product.image}">
+            <img src="${product.image}" data-id="${product.id}">
             <div class="likes">
                 <img src="assets/Frame 568.png">
             </div>
@@ -41,9 +47,16 @@ function createProduct(data) {
             </div>
         </div>
         `;
+
+        const productImage = card.querySelector(".products__item__image img");
+        productImage.addEventListener("click", () => {
+            window.location.href = `pages/product.html?id=${product.id}`;
+        });
+
         products.appendChild(card);
     });
 }
+
 
 categoryItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -58,4 +71,12 @@ GetData("products", count);
 btn.addEventListener("click", ()=>{
     count *= offset
     GetData("products", count);
+})
+
+burger.addEventListener("click", ()=>{
+    if(menu.style.display == "none"){
+        menu.style.display = "block"
+    }else{
+        menu.style.display = "none"
+    }
 })
