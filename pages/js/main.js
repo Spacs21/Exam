@@ -6,6 +6,7 @@ const mainImg = document.querySelector(".main-image")
 const burger = document.querySelector(".header__burger")
 const menu = document.querySelector(".menu")
 const loader = document.querySelector(".lds-roller")
+const path = document.querySelector(".path-info")
 
 async function GetData() {
     let query = new URLSearchParams(window.location.search)
@@ -29,6 +30,11 @@ function createProducts(data){
     let empty = "https://i.pinimg.com/564x/24/f3/a5/24f3a59624eda48066884455d981b57e.jpg"
     let review = Math.ceil(data.rating.rate);
 
+    path.innerHTML = `
+    <div class="history">
+        <h4>Home / ${data.category} / <span>${data.title}</span></h4>
+    </div>
+    `
     details.innerHTML = `
     <h1>${data.title}</h1>
     <div class="rating">
